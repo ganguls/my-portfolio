@@ -15,7 +15,7 @@ export function Hero() {
             </div>
           </div>
 
-          <h1 className="text-5xl md:text-7xl mb-6 text-blue-400 font-mono glitch-effect">
+          <h1 className="text-6xl md:text-8xl mb-6 text-blue-400 font-mono glitch-effect">
             {'> '}<span className="text-cyan-300">GANGUL WEERASINGHE</span>
           </h1>
 
