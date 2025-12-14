@@ -1,0 +1,267 @@
+/* ============================================
+   Mobile-First Responsive Design System
+   ============================================ */
+
+/* Viewport Height Fix for Mobile Browsers */
+:root {
+  --vh: 1vh;
+  --safe-area-inset-top: env(safe-area-inset-top, 0px);
+  --safe-area-inset-right: env(safe-area-inset-right, 0px);
+  --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-area-inset-left: env(safe-area-inset-left, 0px);
+  
+  /* Responsive Typography Scale */
+  --font-size-base: clamp(14px, 2.5vw, 16px);
+  --font-size-sm: clamp(12px, 2vw, 14px);
+  --font-size-lg: clamp(16px, 3vw, 18px);
+  --font-size-xl: clamp(18px, 4vw, 20px);
+  --font-size-2xl: clamp(20px, 5vw, 24px);
+  --font-size-3xl: clamp(24px, 6vw, 30px);
+  --font-size-4xl: clamp(28px, 7vw, 36px);
+  --font-size-5xl: clamp(32px, 8vw, 48px);
+  
+  /* Spacing Scale */
+  --spacing-xs: clamp(0.25rem, 1vw, 0.5rem);
+  --spacing-sm: clamp(0.5rem, 2vw, 1rem);
+  --spacing-md: clamp(1rem, 3vw, 1.5rem);
+  --spacing-lg: clamp(1.5rem, 4vw, 2.5rem);
+  --spacing-xl: clamp(2rem, 5vw, 4rem);
+  
+  /* Touch Target Sizes */
+  --touch-target-min: 44px;
+  --touch-target-comfortable: 48px;
+  
+  /* Container Widths */
+  --container-padding: clamp(1rem, 4vw, 2rem);
+  --container-max-width: 1200px;
+}
+
+/* Fix 100vh on Mobile */
+@supports (height: 100dvh) {
+  :root {
+    --vh: 1dvh;
+  }
+}
+
+/* Base Mobile Styles */
+* {
+  -webkit-tap-highlight-color: rgba(0, 212, 255, 0.2);
+  -webkit-touch-callout: none;
+}
+
+html {
+  /* Prevent font size adjustment on iOS */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  /* Smooth scrolling */
+  scroll-behavior: smooth;
+  /* Prevent horizontal scroll */
+  overflow-x: hidden;
+}
+
+body {
+  /* Prevent horizontal scroll */
+  overflow-x: hidden;
+  /* Use dynamic viewport height */
+  min-height: 100vh;
+  min-height: calc(var(--vh, 1vh) * 100);
+  /* Safe area padding for notched devices */
+  padding-top: var(--safe-area-inset-top);
+  padding-right: var(--safe-area-inset-right);
+  padding-bottom: var(--safe-area-inset-bottom);
+  padding-left: var(--safe-area-inset-left);
+}
+
+/* Typography - Mobile First */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2;
+  font-weight: 500;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+p {
+  line-height: 1.6;
+  max-width: 65ch; /* Optimal reading width */
+}
+
+/* Touch-Friendly Interactive Elements */
+button,
+a,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+  min-height: var(--touch-target-min);
+  min-width: var(--touch-target-min);
+  padding: var(--spacing-sm) var(--spacing-md);
+  /* Prevent text selection on tap */
+  -webkit-user-select: none;
+  user-select: none;
+  /* Better touch feedback */
+  touch-action: manipulation;
+}
+
+/* Form Inputs - Mobile Optimized */
+input,
+textarea,
+select {
+  font-size: var(--font-size-base);
+  /* Prevent zoom on focus (iOS) */
+  font-size: max(16px, var(--font-size-base));
+  /* Better touch targets */
+  min-height: var(--touch-target-min);
+  padding: var(--spacing-sm) var(--spacing-md);
+  /* Better mobile keyboard */
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+input[type="email"],
+input[type="tel"],
+input[type="url"] {
+  /* Show appropriate keyboard */
+  inputmode: email;
+}
+
+input[type="tel"] {
+  inputmode: tel;
+}
+
+/* Images - Responsive by Default */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  /* Prevent layout shift */
+  aspect-ratio: attr(width) / attr(height);
+}
+
+/* Container System - Mobile First */
+.container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+
+/* Responsive Grid - Mobile First */
+.grid {
+  display: grid;
+  gap: var(--spacing-md);
+  grid-template-columns: 1fr; /* Single column on mobile */
+}
+
+/* Responsive Flex - Mobile First */
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+/* Background Image Optimization */
+.tech-bg {
+  background-attachment: scroll; /* Fixed causes issues on mobile */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Disable heavy animations on low-performance devices */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Performance: Reduce animations on mobile */
+@media (max-width: 768px) {
+  .matrix-rain {
+    /* Reduce matrix rain intensity on mobile */
+    opacity: 0.3;
+  }
+}
+
+/* Tablet and Up */
+@media (min-width: 768px) {
+  :root {
+    --container-padding: clamp(2rem, 5vw, 4rem);
+  }
+  
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+  }
+}
+
+/* Desktop and Up */
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .tech-bg {
+    background-attachment: fixed; /* Can use fixed on desktop */
+  }
+}
+
+/* Large Desktop */
+@media (min-width: 1280px) {
+  .grid {
+    gap: var(--spacing-xl);
+  }
+}
+
+/* High DPI Displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* Optimize for retina displays */
+  img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Landscape Mobile */
+@media (max-width: 896px) and (orientation: landscape) {
+  /* Adjust for landscape mobile */
+  :root {
+    --font-size-base: clamp(14px, 2vw, 16px);
+  }
+}
+
+/* Print Styles */
+@media print {
+  * {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+  
+  img {
+    page-break-inside: avoid;
+  }
+  
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+  
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}
+

@@ -100,7 +100,7 @@ export function Footer() {
           <div className="border-t border-blue-500/30 pt-8">
             <div className="text-center text-blue-200 font-mono text-sm mb-4">
               <p>{'>> '}&copy; {currentYear} Gangul Weerasinghe. All rights reserved.</p>
-              <p className="mt-2 text-xs">{'>> Cyber Security Professional | HNB | SLIIT | UCSC'}</p>
+              <p className="mt-2 text-xs">{'>> Cyber Security Professional | SLIIT | UCSC'}</p>
             </div>
             <div className="text-center text-blue-300 font-mono text-xs mt-4">
               <p>{'>> SECURE_CONNECTION_ACTIVE | PORTFOLIO_v2.0'}</p>
