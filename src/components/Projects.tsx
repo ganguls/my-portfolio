@@ -39,7 +39,7 @@ export function Projects() {
             {'>> Security projects and frameworks developed for enterprise security, cloud protection, and threat analysis.'}
           </p>
 
-          <div className="grid md:grid-cols-2 gap-6 sm:gap-7 md:gap-8">
+          <div className="grid md:grid-cols-2 gap-8 sm:gap-9 md:gap-10">
             {projects.map((project) => (
               <div
                 key={project.id}
@@ -54,24 +54,24 @@ export function Projects() {
                   <div className="absolute inset-0 bg-blue-500/10 group-hover:bg-blue-500/20 transition-all"></div>
                 </div>
 
-                <div className="p-6 sm:p-7 md:p-8">
-                  <h3 className="text-xl sm:text-2xl md:text-3xl mb-3 sm:mb-4 text-blue-400 font-mono">
+                <div className="p-7 sm:p-8 md:p-9">
+                  <h3 className="text-xl sm:text-2xl md:text-3xl mb-4 sm:mb-5 text-blue-400 font-mono">
                     {'> '}{project.title}
                   </h3>
-                  <p className="text-blue-200 mb-3 sm:mb-4 font-mono text-base sm:text-lg leading-relaxed">{project.description}</p>
+                  <p className="text-blue-200 mb-4 sm:mb-5 font-mono text-base sm:text-lg leading-relaxed">{project.description}</p>
 
-                  <div className="flex flex-wrap gap-2 sm:gap-3 mb-4 sm:mb-5">
+                  <div className="flex flex-wrap gap-3 sm:gap-4 mb-5 sm:mb-6">
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-3 sm:px-4 py-1.5 sm:py-2 bg-blue-500/10 text-blue-300 border border-blue-500/30 text-sm sm:text-base font-mono rounded"
+                        className="px-4 sm:px-5 py-2 sm:py-2.5 bg-blue-500/10 text-blue-300 border border-blue-500/30 text-sm sm:text-base font-mono rounded"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
 
-                  <div className="flex items-center gap-4 sm:gap-6 flex-wrap">
+                  <div className="flex items-center gap-5 sm:gap-7 flex-wrap">
                     <a
                       href={project.demoUrl}
                       className="flex items-center gap-2 text-blue-400 hover:text-cyan-300 active:text-cyan-200 transition-colors font-mono text-base sm:text-lg min-h-[44px] touch-manipulation focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-slate-900 rounded px-3 py-2"
